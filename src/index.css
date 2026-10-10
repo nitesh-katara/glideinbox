@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+  --color-accent-50: #fdf4ff;
+  --color-accent-100: #fae8ff;
+  --color-accent-200: #f5d0fe;
+  --color-accent-300: #f0abfc;
+  --color-accent-400: #e879f9;
+  --color-accent-500: #d946ef;
+  --color-accent-600: #c026d3;
+  --color-accent-700: #a21caf;
+  --color-accent-800: #86198f;
+  --color-accent-900: #701a75;
+
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+  --animate-pulse-slow: pulse 3s infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+    color: #111111;
+  }
+
+  /* Custom minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Show a very light scrollbar when hovering the scrollable container */
+  *:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  /* Slightly darker when hovering directly over the scrollbar */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-black text-white px-6 py-3 font-bold border-2 border-black
+           hover:bg-transparent hover:text-black transition-colors duration-200
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply bg-white text-black border-2 border-black px-6 py-3 font-bold
+           hover:bg-gray-100 transition-colors duration-200
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
+  }
+  .card {
+    @apply bg-white border-2 border-black p-6;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-black bg-white text-black font-mono
+           focus:outline-none focus:ring-2 focus:ring-black focus:border-black
+           placeholder:text-gray-500 transition-colors duration-200;
+  }
+  .select-field {
+    @apply px-4 py-3 border-2 border-black bg-white text-black font-mono
+           focus:outline-none focus:ring-2 focus:ring-black focus:border-black
+           transition-colors duration-200 cursor-pointer appearance-none rounded-none;
+  }
+  .toast {
+    @apply fixed bottom-6 right-6 bg-black text-white px-5 py-3 border-2 border-black
+           flex items-center gap-3 text-sm font-bold z-50 animate-slide-up;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply inline-block bg-primary-300 px-2 sm:px-4 py-1 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-black -rotate-1;
+  }
+  .bg-grid {
+    background-image: 
+      linear-gradient(#f0f0f0 1px, transparent 1px),
+      linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
+
+/* Email item animations */
+.email-item {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Brutalist Loading spinner */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #000;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+/* Pulse dot for live indicator */
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background: #000;
+  animation: pulse 2s infinite;
+}
+
+/* Iframe reset */
+iframe {
+  border: none;
+}
