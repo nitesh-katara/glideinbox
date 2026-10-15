@@ -101,22 +101,16 @@ const Sidebar = () => {
           }
         `}
       >
-        <div className="p-5 sm:p-6 border-b-2 border-black bg-black text-white flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 border-2 border-white bg-white overflow-hidden flex-shrink-0">
-              <img src="/favicon.png" alt="GlideInbox Logo" className="w-full h-full object-cover" />
-            </div>
-            <span className="text-xl sm:text-2xl font-black uppercase tracking-tighter">GlideInbox</span>
-          </div>
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="w-10 h-10 border-2 border-white bg-black hover:bg-white hover:text-black flex items-center justify-center font-black transition-colors"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+        {/* Close button attached to the left edge on desktop, top-left on mobile */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute 
+            -top-12 left-1/2 -translate-x-1/2 w-32 h-12 border-x-2 border-t-2 border-b-0 shadow-[4px_-4px_0px_0px_rgba(0,0,0,1)]
+            sm:top-1/2 sm:-translate-y-1/2 sm:-left-12 sm:translate-x-0 sm:w-12 sm:h-28 sm:border-y-2 sm:border-l-2 sm:border-r-0 sm:border-b-2 sm:[writing-mode:vertical-rl] sm:shadow-[-4px_4px_0px_0px_rgba(0,0,0,1)]
+            border-black bg-yellow-300 text-black hover:bg-black hover:text-white font-black uppercase cursor-pointer transition-colors flex items-center justify-center z-50"
+        >
+          CLOSE
+        </button>
 
         <nav className="flex-1 overflow-y-auto flex flex-col p-4 sm:p-6 gap-4 bg-gray-50 bg-grid">
           {links.map((link) => {
@@ -146,7 +140,7 @@ const Sidebar = () => {
 
         <div className="p-5 sm:p-6 border-t-2 border-black bg-white flex flex-col items-center gap-3">
            <a 
-              href="https://github.com" 
+              href="https://github.com/nitesh-katara/glideinbox" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full py-3 border-2 border-black bg-white text-black font-black uppercase text-sm flex items-center justify-center gap-2 hover:bg-black hover:text-white transition-colors"

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "bustand",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
